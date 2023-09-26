@@ -9,6 +9,27 @@
     <!-- the entire body must be written by student -->
     <h1>Caeser's Cipher</h1>
 
-    <script type="text/javascript" src="./script.js"></script>
+    <script type="text/javascript" src="./script.js">
+
+		function rot13(str) {
+  let decoded = '';
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    if (/^[A-Z]$/.test(char)) {
+      const charCode = str.charCodeAt(i);
+      const shift = charCode < 78 ? 13 : -13;
+      decoded += String.fromCharCode(charCode + shift);
+    } else {
+      decoded += char;
+    }
+  }
+  return decoded;
+}
+
+const encodedString = 'EBG13 rknzcyr.';
+const decodedString = rot13(encodedString);
+console.log(decodedString);
+
+	</script>
   </body>
 </html>
