@@ -35,7 +35,18 @@ function rot13(encodedStr) {
   let decodedArr = []; // Your Result goes here
   // Only change code below this line
 
-  return; //return decodedArr
+ const decodedString = encodedStr.replace(/[A-Z]/g, (char) => {
+    // Get the ASCII value of the character
+    const charCode = char.charCodeAt(0);
+    // Subtract 65 to get the position of the letter in the alphabet (A=0, B=1, ..., Z=25)
+    const position = charCode - 65;
+    // Apply ROT13 shift by adding 13 and taking the result modulo 26
+    const decodedPosition = (position + 13) % 26;
+    // Convert the resulting position back to a character
+    return String.fromCharCode(decodedPosition + 65);
+  });
+
+  return decodedString;
 }
 
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
